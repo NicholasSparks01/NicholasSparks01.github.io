@@ -1307,11 +1307,25 @@ input, select, textarea {
 
 	body {
 		/*background-image: url("images/overlay.png"), url("images/bg.jpg");*/
+		background: linear-gradient(-45deg, #050A30, #000C66, #5b5b5b);
 		background-color: #051622;
 		background-repeat: repeat, no-repeat;
-		background-size: auto, 100% 100%;
+		background-size: 400% 400%;
 		background-attachment: fixed;
 		overflow-y: scroll;
+		animation: gradient 15s ease infinite;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
