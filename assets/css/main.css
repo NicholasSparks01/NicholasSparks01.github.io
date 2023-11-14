@@ -35,6 +35,8 @@
     margin-top: 50px; /* Adjust this value to account for the height of the navbar */
     padding: 16px;
     background-color: #1B2E35;
+    display: flex;
+    flex-direction: column;
   }
 
   .section1 {
