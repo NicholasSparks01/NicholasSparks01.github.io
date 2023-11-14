@@ -12,60 +12,63 @@
 </head>
 <body>
 
-<div id="navbar">
-  <a href="#Welcome">Home</a>
-  <a href="./AboutMe.html">About</a>
-  <a href="./Projects.html">Projects</a>
-</div>
+  <div id="navbar">
+    <a href="#Welcome">Home</a>
+    <a href="./AboutMe.html">About</a>
+    <a href="./Projects.html">Projects</a>
+  </div>
 
-<div id="content">
-  <div class="section1" id="Welcome">
-    <div class="grid-container">
+  <div id="content">
+    <div class="section1" id="Welcome">
+      <div class="grid-container">
 
-      <div class="grid-item">
-        <div id="highlight">
-          <h2 style="color: white;">Welcome</h2>
+        <div class="grid-item">
+          <div id="highlight" style="line-height: .7;">
+            <h2>Welcome</h2>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div id="highlight">
+            <p>
+              Description of why website exists. I'm going to type out random ass stuff.
+              Going to review this later to see if it wraps the text in a correct and fashioned manner.
+              this is me testing out to see if it works.
+            </p>
+          </div>
         </div>
-        <div id="highlight">
-        <p style="color: white;">
-          Description of why website exists. I'm going to type out random ass stuff.
-          Going to review this later to see if it wraps the text in a correct and fashioned manner.
-          this is me testing out to see if it works.
-        </p>
-      </div>
-      </div>
 
-      <div class="grid-item" id="MePic">
-        <img src="./images/me.jpg" style="height: 250px;">
-      </div>
+        <div class="grid-item" id="MePic">
+          <img src="./images/me.jpg" style="height: 250px;">
+        </div>
 
+      </div>
     </div>
+
+    <div class="section1" id="RecentProjects">
+      <h2>Recent Projects</h2>
+      <p>This is the content of RECENT PROJECTS.</p>
+    </div>
+
+    <div class="section1" id="WorkExperience">
+      <h2>Section 3</h2>
+      <p>This is the content of WORK EXPERIENCE</p>
+    </div>
+    
   </div>
 
-  <div class="section1" id="RecentProjects">
-    <h2>Recent Projects</h2>
-    <p>This is the content of RECENT PROJECTS.</p>
-  </div>
+  <script>
+    // Optional: Smooth scrolling to anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-  <div class="section1" id="WorkExperience">
-    <h2>Section 3</h2>
-    <p>This is the content of WORK EXPERIENCE</p>
-  </div>
-  
-</div>
-
-<script>
-  // Optional: Smooth scrolling to anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
       });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>

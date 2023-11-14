@@ -1,39 +1,40 @@
 
-@font-face {
-    font-family: 'ModeNine';
-    src: url('../webfonts/Modenine-2OPd.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+  @font-face {
+      font-family: 'ModeNine';
+      src: url('../webfonts/Modeseven-L3n5.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+  }
 
-body {
-	margin: 0;
-	padding: 0;
-	font-family: ModeNine;
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ModeNine;
+    background-color: #1B2E35;
   }
 
   #navbar {
-	background-color: #333;
-	overflow: hidden;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000; /* Make sure it's above other elements on the page */
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Make sure it's above other elements on the page */
   }
 
   #navbar a {
-	float: left;
-	display: block;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
   }
 
   #content {
-	margin-top: 50px; /* Adjust this value to account for the height of the navbar */
-	padding: 16px;
-	background-color: #1B2E35;
+    margin-top: 50px; /* Adjust this value to account for the height of the navbar */
+    padding: 16px;
+    background-color: #1B2E35;
   }
 
   .section1 {
