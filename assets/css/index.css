@@ -1,6 +1,6 @@
 
   .section1 {
-    display: flex;
+    display: inline-block;
     height: auto;
     margin-bottom: 100px;
     /* text-align: center; */
@@ -11,6 +11,10 @@
     background-position: center; /* Centers the background image */
     height: auto;
     min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   #Welcome {
@@ -43,16 +47,17 @@
   .grid-container {
     display: grid;
 	  grid-column-gap: 20px;
-    /* grid-template-columns: 1.5fr 1fr; Two columns with equal width */
     justify-items: center;
-    /* height: 500px; */
     grid-template-columns: 1.5fr 1fr;;
+    padding: 20px;
+    align-self: center;
   }
 
   .grid-item {
     padding: 10px;
     height: auto;
     display: inline-block;
+    vertical-align: middle;
   }
 
   /* Media query for small screens */
