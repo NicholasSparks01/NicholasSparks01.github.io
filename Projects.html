@@ -1,41 +1,43 @@
 <!DOCTYPE html>
-<!--
-	Nicholas Sparks
-
--->
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Projects</title>
+    <link rel="stylesheet" href="assets/css/Projects.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-<div id="navbar">
-  <a href="./index.html#section1">Home</a>
-  <a href="./AboutMe.html">About</a>
-  <a href="./Projects.html">Projects</a>
-  <!-- <a href="#section3">Projects</a> -->
-</div>
-
-<div id="content">
-  <div>
-    <Text> Projects </Text>
+  <div id="navbar">
+    <a href="./index.html">Home</a>
+    <a href="./AboutMe.html">About</a>
+    <a href="./Projects.html">Projects</a>
   </div>
-</div>
 
-<script>
-  // Optional: Smooth scrolling to anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
+  <div id="content">
+    <div class="grid-container">
+        <!-- Project 1 -->
+        <div class="project-item" onclick="window.location.href='your_project_1_link.html'">
+            <img src="/images/pic01.jpg" alt="Project 1">
+            <h3>Project 1 Title</h3>
+        </div>
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
-</script>
+        <!-- Project 2 -->
+        <div class="project-item" onclick="window.location.href='your_project_2_link.html'">
+            <img src="images/pic02.jpg" alt="Project 2">
+            <h3>Project 2 Title</h3>
+        </div>
 
+        <!-- Project 3 -->
+        <div class="project-item" onclick="window.location.href='your_project_3_link.html'">
+            <img src="/images/pic03.jpg" alt="Project 3">
+            <h3>Project 3 Title</h3>
+        </div>
+
+        <!-- Add more project items as needed -->
+    </div>
+  </div>
 </body>
+
 </html>
