@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.project-post {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-header {
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.project-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.project-date {
+    color: #666;
+}
+
+.project-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.project-description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-link {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.project-link:hover {
+    background-color: #0056b3;
+}
