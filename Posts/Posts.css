@@ -1,11 +1,23 @@
+@font-face {
+    font-family: 'IBMPlexMono';
+    src: url('../webfonts/IBMPlexMono-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 20px;
 }
 
 .project-post {
     max-width: 800px;
     margin: 0 auto;
+}
+
+.project-description p {
+    font-family: 'IBMPlexMono';
+    color: #BFBFBD;
+    font-size: 17px;
 }
 
 .project-header {
