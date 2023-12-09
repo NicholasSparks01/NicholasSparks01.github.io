@@ -17,7 +17,7 @@ body {
 .project-description p {
     font-family: 'IBMPlexMono';
     color: #BFBFBD;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .project-header {
@@ -54,6 +54,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px;
+    padding-bottom: 50px;
 }
 
 .project-link {
@@ -72,4 +73,8 @@ body {
 .project-description img {
     display: block;
     margin: 0 auto;
+}
+
+.project-description h2 {
+    color: orange;
 }
