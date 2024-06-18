@@ -1,12 +1,15 @@
-@font-face {
-    font-family: 'IBMPlexMono';
-    src: url('../webfonts/IBMPlexMono-Bold.ttf') format('truetype');
+* {
+    font-family: sans-serif;
     font-weight: normal;
     font-style: normal;
 }
 
 body {
     margin: 20px;
+}
+
+h2 {
+    font-weight: bold;
 }
 
 .project-post {

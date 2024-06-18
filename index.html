@@ -1,60 +1,69 @@
 <!DOCTYPE html>
-<!--
-	Nicholas Sparks
-
--->
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/index.css">
-</head>
-<body>
-  <div id="navbar">
-    <a href="#Welcome">Home</a>
-    <a href="./AboutMe.html">About</a>
-    <a href="./Projects.html">Projects</a>
-  </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+    </head>
 
-  <div id="content">
-    <div class="section1" id="Welcome">
-      <div class="grid-container">
+    <body>
+        <header class="header">
+            
+            <nav class="navbar" id="myTopnav">
+                <a href="" class="logo">LOGO</a>
+                <a href="index.html">Home</a>
+                <a href="Projects.html">Projects</a>
+                <a href="About.html">About</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                   &#9776;
+                </a>
+            </nav>
+           
+        </header>
 
-        <div class="grid-item">
-          <div id="highlight" style="line-height: .7;">
-            <h2>Welcome</h2>
-          </div>
-          <div id="highlight">
-            <p>
-              Description of why website exists. I'm going to type out random stuff.
-              Going to review this later to see if it wraps the text in a correct and fashioned manner.
-              this is me testing out to see if it works.
-            </p>
-          </div>
+
+        <div class="container">
+            <div style="height: 120px;"></div>
+
+            <div class="welcome">
+                <h1 id="column"> My Name</h1>
+                <img src="./Profile_Photo.png">
+                <br>
+                <p id="column">
+                    This is a website to showcase all of my work over the years.
+                    Maybe you can find some useful information out of it.
+                </p>
+            </div>
+        
+            <div class="card" id="Projects">
+                <h2>My Projects</h2>
+                <p> <span class="bash">~$</span>
+                I try to keep my projects brief, yet informational for people wanting to start in said area.
+                However, technical writing isn't my forte, so take everything with a grain of salt.
+                </p>
+            </div>
+
+            <div class="card" id="About">
+                <h2>All about ME</h2>
+                <p> <span class="bash">~$</span> Hello! I created this website to both encourage myself and anyone else interested in cybersecurity.
+                I started this amazing career back in college and have loved it ever since. In this field, you are always a student trying to learn.
+                Feel free to check out my work on the portfolio page. I try to keep the website up to date.</p>
+            </div>
         </div>
 
-        <div class="grid-item" id="MePic">
-          <img src="./images/Cropped_Profile.png" style="height: 300px">
-        </div>
 
-      </div>
     </div>
 
-    <div class="section1" id="RecentProjects">
-      <h2>Recent Projects</h2>
-      <p>This is the content of RECENT PROJECTS.</p>
-    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "navbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "navbar";
+            }
+        }
+    </script>
 
-    <div class="section1" id="WorkExperience">
-      <h2>Section 3</h2>
-      <p>This is the content of WORK EXPERIENCE</p>
-    </div>
-    
-  </div>
-
-  <script src="./assets/js/main.js"></script>
-
-
-</body>
+    </body>
 </html>

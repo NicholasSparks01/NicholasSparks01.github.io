@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: #0C0C32;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    scroll-behavior: smooth;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.navbar a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a.icon {
+    display: none;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: .3s;
+}
+
+/* .navbar a:hover::before {
+    width: 100%;
+    background-color: limegreen;
+} */
+
+@media screen and (max-width: 600px) {
+    .navbar a:not(.logo) {display: none;}
+    .navbar a.icon {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar.responsive {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a {
+        display: block;
+        text-align: left;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome img {
+    max-width: 100%;
+    height: 220px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#column {
+    flex: 50%;
+}
+
+.card {
+    padding: 160px 50px;
+    margin-top: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin: 60px;
+    width: 70%;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.bash {
+    color: limegreen;
+}

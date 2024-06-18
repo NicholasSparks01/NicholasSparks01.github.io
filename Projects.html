@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Projects</title>
-    <link rel="stylesheet" href="assets/css/Projects.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="index.css">
+
 </head>
 <body>
 
-  <div id="navbar">
-    <a href="./index.html">Home</a>
-    <a href="./AboutMe.html">About</a>
-    <a href="./Projects.html">Projects</a>
-  </div>
+    <header class="header">
+            
+        <nav class="navbar" id="myTopnav">
+            <a href="" class="logo">LOGO</a>
+            <a href="index.html">Home</a>
+            <a href="Projects.html">Projects</a>
+            <a href="About.html">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+               &#9776;
+            </a>
+        </nav>
+       
+    </header>
+
+    <div style="height: 120px;"></div>
 
   <div id="content">
     <div class="grid-container">
         <!-- Project 1 -->
         <div class="project-item" onclick="window.location.href='./Posts/Proxmox-Lab-Enviorment-Creation.html'">
-            <img src="/images/pic01.jpg" alt="Project 1">
-            <h3 class="project-title">Proxmox Lab Enviorment</h3>
+            <img src="/images/Proxmox_Logo.png" alt="Project 1" style="max-width: 280px;">
+            <h3 class="project-title">Custom Lab Enviorment</h3>
         </div>
 
         <!-- Project 2 -->
-        <div class="project-item" onclick="window.location.href='your_project_2_link.html'">
-            <img src="images/pic02.jpg" alt="Project 2">
-            <h3 class="project-title">Project 2 Title</h3>
+        <div class="project-item" onclick="window.location.href='https://medium.com/@nicholasgsparks/the-new-age-of-vpns-dpn-b237a6541423'" target="_blank">
+            <img src="images/DPN.png" alt="Project 2">
+            <h3 class="project-title">VPN or DPN</h3>
         </div>
 
         <!-- Project 3 -->

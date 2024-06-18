@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Posts.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../index.css">
+
     <title>Proxmox Lab Enviorment Creation Guide</title>
     <style>
         
@@ -12,17 +13,28 @@
 </head>
 <body>
 
-    <div id="navbar">
-        <a href="../index.html">Home</a>
-        <a href="../AboutMe.html">About</a>
-        <a href="../Projects.html">Projects</a>
-      </div>
+    <header class="header">
+            
+        <nav class="navbar" id="myTopnav">
+            <a href="" class="logo">LOGO</a>
+            <a href="../index.html">Home</a>
+            <a href="../Projects.html">Projects</a>
+            <a href="../About.html">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+               &#9776;
+            </a>
+        </nav>
+       
+    </header>
+    <div style="height: 120px;"></div>
 
     <div class="project-post">
 
         <div class="project-header">
             <h1 class="project-title">Malware Analysis Lab</h1>
             <p class="project-date">Published on: November 30, 2023</p>
+            <p class="project-date">Last Updated: June 16, 2024</p>
+
         </div>
 
         <img class="project-image" src="../images/Proxmox_Logo.png" alt="Project Image">
@@ -30,19 +42,25 @@
         <div class="project-description">
             <h2>Overview</h2>
             <p>
-                Before I dive into what my labs topology looks like and other detailed
-                specifications, I will first explain what Proxmox is for some of the 
-                readers who might not know. 
+                This project has a focus on having a safe environment for creating, breaking, and then 
+                fixing practically anything you can imagine. Within Proxmox, you can build out a custom 
+                infrastructure to recreate any situation you find useful. An important feature that Proxmox 
+                can do to ensure the safety of your home network is isolation. Isolation allows everything 
+                to stay contained within the boundaries of the virtual network. While this post will not hold 
+                your hand and show you how to use Proxmox, it will show you what to build out to create the environment safely.
             </p>
+            <br>
             <p>
-                Proxmox is an open-source Virtual Enviorment platform that combines two 
-                virtualization technologies: KVM's (Kernel-based Virtual Machine) for 
-                virtual machines and LXC's (Linux Containers) for lightweight 
-                container-based virtualization.
-                Since it is a type-one hypervisor, We will be able to really dive into some of the
-                more advanced functionalities in the lab.
+                Before I dive into what my lab’s topology looks like and other detailed specifications, I will 
+                first explain what Proxmox is for some of the readers who might not know.
             </p>
-
+            <br>
+            <p>
+                Proxmox is an just an open-source Virtual Environment platform that combines two virtualization 
+                technologies: KVM's (Kernel-based Virtual Machine) for virtual machines and LXC's (Linux Containers) 
+                for lightweight container-based virtualization. Since it is a type-one hypervisor, we will be able 
+                to really dive into some of the more advanced functionalities in the lab.
+            </p>
             <br>
             <p>
                 Below is a topology of my Lab.
@@ -68,12 +86,9 @@
                 flowing in and out of my Malware Infected Enviorment. 
             </p>
             <p>  
-                In short, pfSense is a open-source firewall and router software based on
-                FreeBSD. It has a very powerful/ customizable platform for managing and 
-                securing networks that offers loads of features and functionalities 
-                (we will dive into this soon). Whats nice about pfSense is its community
-                forums for guidance as it is used in both home and enterprise enviorments,
-                so you can find the answer to pretty much any issue/question you might face.
+                What’s nice about pfSense is its community forums for guidance as it is used in 
+                both home and enterprise environments, so you can find the answer to pretty much 
+                any issue/question you might face.
             </p>
             <p>
                 One step below our pfSense firewall are 2 VMs, remNUX and FlareVM. Both of these
@@ -83,10 +98,31 @@
 
             <h2>pfSense</h2>
             <p>
-                Some Random stuff
+                I utilize a couple of features in the firewall that serve specific purposes within the environment. 
+            </p>
+            <br>
+            <p>
+                One of these features is a VPN to route malicious traffic outside my network in a reasonably 
+                safe way because the IP address the attackers will see won’t be my own home. This allows me 
+                to understand things like what replies are the C2’s giving to the malicious code thus further 
+                looking into the dynamic aspect. 
+
+                Another feature is the static rules that can be made to stop traffic all 
+                together. I use that when I want all traffic to stay contained within the environment it’s in.
             </p>
 
             <h2>remNUX</h2>
+            <p>
+                This is a Linux Distribution that was created to perform analysis on practically anything on a 
+                computer. It has a ton of tools that can take hours to understand the full breath of it all. 
+                I will dive more into this distro once we get acclimated with the topology and beginning analysis steps.
+            </p>
+
+            <h2>FlareVM</h2>
+            <p>
+                This is just a Windows OS with the “FlareVM” packages installed onto it. Yet another go to set 
+                of tools mainly because malware is most commonly exploited on Windows machines. 
+            </p>
 
         </div>
 
