@@ -42,12 +42,10 @@
         <div class="project-description">
             <h2>Overview</h2>
             <p>
-                This project has a focus on having a safe environment for creating, breaking, and then 
-                fixing practically anything you can imagine. Within Proxmox, you can build out a custom 
-                infrastructure to recreate any situation you find useful. An important feature that Proxmox 
-                can do to ensure the safety of your home network is isolation. Isolation allows everything 
-                to stay contained within the boundaries of the virtual network. While this post will not hold 
-                your hand and show you how to use Proxmox, it will show you what to build out to create the environment safely.
+                This project has a focus on having a safe environment for practically anything you want to create, 
+                analyze, fix, and break. Within Proxmox, you can build out customized infrastructure to recreate any 
+                situation you find useful. An important feature that Proxmox can do to ensure the safety of your home 
+                network is isolation. Isolation allows everything to stay contained within the boundaries of what you want. While this post will not hold your hand and show you how to use Proxmox, it will show you what to build out to create the environment safely.
             </p>
             <br>
             <p>
@@ -70,20 +68,19 @@
 
             <h2>My Topology Explained</h2>
             <p>
-                In the topology, I have my Proxmox enviorment set up in the dotted box. 
-                In my physical enviorment, I have a dedicated used corporate Desktop that
-                I found on amazon for maybe $100 + tax. This Desktop is plugged into my home router
-                via ethernet. Moving on, Proxmox has a very nice feature called a 
-                Linux Bridge, which essentially just acts as its own virtual switch. 
-                I have my actual Malware Analays 
-                Enviorment to the right of the Linux Bridge. From the bridge I am able 
-                to assign VLANs to the VMs hooked up to said Linux Bridge. All VMs attached 
-                directly to the Bridge are assigned their own IP address on my home network
+                In the topology, I have my Proxmox environment set up around the outer most box. Everything inside 
+                this box is all virtualized with no physical hardware. The server has several NICs, however I will 
+                only be utilizing 2 of them. NIC 0 being my “safe” network with legitimate software like plex, website, 
+                Minecraft server, etc. NIC 1 is the “unsafe” network, which is connected to a pfSense VM to act as a 
+                firewall between the router and the unsafe network. One special aspect of the unsafe network is the use 
+                of VLANs. I am utilizing my VLANs as subnet containers that are set by Proxmox. For example, all the 
+                devices contained within 192.168.100.1/24 are using VLAN 20. This way pfSense can contain each environment 
+                within its own network and making it easily repeatable.  In short, Proxmox will set the VLAN for each VM 
+                and pfSense will set up the subnetting.
                 
-                To the right is my acutal Malware Analaysis Lab enviorment, 
-                and to the left are other projects I am working on in the future. Following the line down is 
-                a VM called pfSense, which is a firewall that manages the traffic 
-                flowing in and out of my Malware Infected Enviorment. 
+                Right now, I am only utilizing 3 subnets within the pfSense environment, however with the way I have it set up 
+                (192.168.0.1/16), I am able to create over 250 subnets each having over 250 devices on them. The only real limiting 
+                factor is system resources. 
             </p>
             <p>  
                 What’s nice about pfSense is its community forums for guidance as it is used in 
