@@ -15,3 +15,5 @@ TEST
 
 
 This is Home! `index.html`
+
+[[Second Note\|Second Note]]
