@@ -1,15 +1,15 @@
 [
 {
 		"title": "First Note",
-		"date":"Sat Nov 01 2025 00:46:15 GMT+0000 (Coordinated Universal Time)",
+		"date":"Sat Nov 01 2025 00:46:38 GMT+0000 (Coordinated Universal Time)",
 		"url":"/",
-		"content": "This is my first note\nTEST\n\n[!note]\nThis is a note\n\nThis is Home! index.html\n<a class=\"internal-link\" target=\"\" data-note-icon=\"\" href=\"/second-note/\">Second Note</a>",
+		"content": "This is my first note\nTEST\n\n[!note]\nThis is a note\n\nThis is Home! index.html\n<a class=\"internal-link\" target=\"\" data-note-icon=\"\" href=\"/second-note/\">Second Note</a>\nThis is it.",
 		"tags": [ "note","gardenEntry"]
 },
 
 {
 		"title": "Second Note",
-		"date":"Sat Nov 01 2025 00:46:15 GMT+0000 (Coordinated Universal Time)",
+		"date":"Sat Nov 01 2025 00:46:38 GMT+0000 (Coordinated Universal Time)",
 		"url":"/second-note/",
 		"content": "This is a test <a class=\"internal-link\" target=\"\" data-note-icon=\"\" href=\"/\">First Note</a>",
 		"tags": [ "note"]
