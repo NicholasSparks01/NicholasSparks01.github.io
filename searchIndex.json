@@ -1,7 +1,7 @@
 [
 {
 		"title": "First Note",
-		"date":"Sat Nov 01 2025 00:37:31 GMT+0000 (Coordinated Universal Time)",
+		"date":"Sat Nov 01 2025 00:38:47 GMT+0000 (Coordinated Universal Time)",
 		"url":"/",
 		"content": "This is my first note\nTEST\n\n[!note]\nThis is a note\n\nThis is Home! index.html",
 		"tags": [ "note","gardenEntry"]
@@ -9,9 +9,9 @@
 
 {
 		"title": "Second Note",
-		"date":"Sat Nov 01 2025 00:37:31 GMT+0000 (Coordinated Universal Time)",
+		"date":"Sat Nov 01 2025 00:38:47 GMT+0000 (Coordinated Universal Time)",
 		"url":"/second-note/",
-		"content": "",
+		"content": "This is a test <a class=\"internal-link is-unresolved\" href=\"/404\" target=\"\">First Ever Note</a>",
 		"tags": [ "note"]
 }
 ]
