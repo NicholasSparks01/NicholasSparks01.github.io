@@ -1,0 +1,160 @@
+# =============================================================================
+#  Site configuration
+#  Most day-to-day settings you might change are near the top.
+# =============================================================================
+
+# Overridden automatically by the GitHub Actions workflow at deploy time,
+# so you normally never need to touch this.
+baseURL: "https://nicholassparks01.github.io/NicholasSparks01/"
+title: "Nicholas Sparks"
+locale: en-us
+theme: hextra
+
+enableRobotsTXT: true
+enableGitInfo: true          # "Last updated" dates come from git history
+enableInlineShortcodes: true
+
+# Content that is still marked `draft: true` is never published.
+buildDrafts: false
+
+taxonomies:
+  tag: tags
+
+markup:
+  highlight:
+    noClasses: false         # use the theme's light/dark syntax colors
+  goldmark:
+    renderer:
+      unsafe: true           # allow raw HTML inside Markdown
+    extensions:
+      passthrough:           # LaTeX math: $$ ... $$ and \( ... \)
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
+
+menu:
+  main:
+    - name: Blog
+      pageRef: /blog
+      weight: 1
+    - name: Notes
+      pageRef: /notes
+      weight: 2
+    - name: Tags
+      pageRef: /tags
+      weight: 3
+    - name: Archives
+      pageRef: /archives
+      weight: 4
+    - name: About
+      pageRef: /about
+      weight: 5
+    - name: Search
+      weight: 6
+      params:
+        type: search
+    - name: GitHub
+      weight: 7
+      url: "https://github.com/NicholasSparks01"
+      params:
+        icon: github
+    - name: RSS
+      weight: 8
+      url: "/blog/index.xml"
+      params:
+        icon: rss
+
+  # Extra links shown at the bottom of the left sidebar on /notes pages
+  sidebar:
+    - identifier: more
+      name: More
+      params:
+        type: separator
+      weight: 1
+    - name: "Blog"
+      pageRef: "/blog"
+      weight: 2
+    - name: "About"
+      pageRef: "/about"
+      weight: 3
+
+params:
+  description: "Vulnerability research, reverse engineering, and exploitation write-ups."
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      width: 28
+      height: 28
+    width: wide
+
+  page:
+    width: wide
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: wide
+
+  theme:
+    default: system          # light | dark | system
+    displayToggle: true
+
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  # "Edit this page" link at the bottom of every page
+  editURL:
+    enable: true
+    base: "https://github.com/NicholasSparks01/NicholasSparks01/edit/main/content"
+
+  blog:
+    list:
+      displayTags: true
+      sortBy: date
+      sortOrder: desc
+      pagerSize: 15
+    article:
+      displayPagination: true
+
+  archives:
+    section: blog
+    dateFormat: "Jan 02"
+
+  toc:
+    displayTags: true
+
+  highlight:
+    copy:
+      enable: true
+      display: hover
+
+  imageZoom:
+    enable: true
+
+  externalLinkDecoration: true
+
+  # Comments via GitHub Discussions. See WRITING.md -> "Enable comments".
+  comments:
+    enable: false
+    type: giscus
+    giscus:
+      repo: NicholasSparks01/NicholasSparks01
+      repoId: ""
+      category: Announcements
+      categoryId: ""
