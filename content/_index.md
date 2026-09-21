@@ -5,13 +5,13 @@ layout: hextra-home
 
 {{< hextra/hero-badge link="blog" >}}
   <div class="hx:w-2 hx:h-2 hx:rounded-full hx:bg-primary-400"></div>
-  <span>Security Research Blog</span>
+  <span>Vulnerability Research · Reverse Engineering</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
 
 <div class="hx:mt-6 hx:mb-6">
 {{< hextra/hero-headline >}}
-  Vulnerability Research&nbsp;<br class="hx:sm:block hx:hidden" />& Reverse Engineering
+  Security Research
 {{< /hextra/hero-headline >}}
 </div>
 

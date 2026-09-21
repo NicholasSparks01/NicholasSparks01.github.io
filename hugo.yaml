@@ -83,7 +83,7 @@ menu:
       weight: 3
 
 params:
-  description: "Vulnerability research, reverse engineering, and exploitation write-ups."
+  description: "Security research: vulnerability research, reverse engineering, and exploitation write-ups."
 
   navbar:
     displayTitle: true
