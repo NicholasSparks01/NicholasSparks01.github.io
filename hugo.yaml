@@ -5,7 +5,7 @@
 
 # Overridden automatically by the GitHub Actions workflow at deploy time,
 # so you normally never need to touch this.
-baseURL: "https://nicholassparks01.github.io/NicholasSparks01/"
+baseURL: "https://nicholassparks01.github.io/"
 title: "Nicholas Sparks"
 locale: en-us
 theme: hextra
@@ -121,7 +121,7 @@ params:
   # "Edit this page" link at the bottom of every page
   editURL:
     enable: true
-    base: "https://github.com/NicholasSparks01/NicholasSparks01/edit/main/content"
+    base: "https://github.com/NicholasSparks01/NicholasSparks01.github.io/edit/main/content"
 
   blog:
     list:
@@ -154,7 +154,7 @@ params:
     enable: false
     type: giscus
     giscus:
-      repo: NicholasSparks01/NicholasSparks01
+      repo: NicholasSparks01/NicholasSparks01.github.io
       repoId: ""
       category: Announcements
       categoryId: ""

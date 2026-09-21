@@ -13,7 +13,7 @@ and is deployed to GitHub Pages automatically on every push to `main`.
 
 # 2. Preview locally with live reload (drafts included)
 hugo server -D
-#    -> http://localhost:1313/NicholasSparks01/
+#    -> http://localhost:1313/
 
 # 3. Publish: set `draft: false` in the front matter, then
 git add . ; git commit -m "Post: Reversing a router firmware update" ; git push

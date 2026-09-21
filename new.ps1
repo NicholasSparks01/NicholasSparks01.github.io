@@ -52,7 +52,7 @@ $text = $text -replace '(?m)^title: ".*"', "title: `"$escaped`""
 
 Write-Host ""
 Write-Host "Created $file" -ForegroundColor Green
-Write-Host "Preview with:  hugo server -D   then open http://localhost:1313/NicholasSparks01/"
+Write-Host "Preview with:  hugo server -D   then open http://localhost:1313/"
 Write-Host "Publish by setting 'draft: false', then commit and push."
 
 if (-not $NoOpen -and (Get-Command code -ErrorAction SilentlyContinue)) {
