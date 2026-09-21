@@ -1,9 +1,42 @@
+/* ---- Fonts (self-hosted in static/fonts, SIL Open Font License) --------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-wght-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+}
+
 /* Brand color: change --primary-hue to re-theme the whole site (0-360). */
 :root {
   --primary-hue: 199deg;
   --primary-saturation: 89%;
   --primary-lightness: 48%;
+
+  --hx-font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --hx-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4 { letter-spacing: -0.02em; }
+code, pre, kbd { font-variant-ligatures: none; } /* no "!=" -> "≠" in code */
 
 /* ---- Recent posts list on the home page ---------------------------------- */
 .ns-recent {
@@ -29,7 +62,7 @@
 }
 .ns-recent-date {
   flex-shrink: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--hx-font-mono);
   font-size: 0.85rem;
   opacity: 0.55;
   padding-top: 0.2rem;
