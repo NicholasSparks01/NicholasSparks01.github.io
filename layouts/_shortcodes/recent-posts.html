@@ -1,0 +1,19 @@
+{{- /* Lists the newest blog posts. Usage: {{< recent-posts count=5 >}} */ -}}
+{{- $count := .Get "count" | default 5 | int -}}
+{{- $posts := where site.RegularPages "Section" "blog" -}}
+<div class="ns-recent">
+  {{- range first $count $posts.ByDate.Reverse }}
+  <a class="ns-recent-item" href="{{ .RelPermalink }}">
+    <span class="ns-recent-date">{{ .Date.Format "2006-01-02" }}</span>
+    <span class="ns-recent-body">
+      <span class="ns-recent-title">{{ .Title }}</span>
+      {{- with .Params.tags }}
+      <span class="ns-recent-tags">{{ range . }}<span>#{{ . }}</span>{{ end }}</span>
+      {{- end }}
+      <span class="ns-recent-summary">{{ partial "utils/page-description" . }}</span>
+    </span>
+  </a>
+  {{- else }}
+  <p>No posts yet.</p>
+  {{- end }}
+</div>

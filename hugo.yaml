@@ -1,0 +1,143 @@
+# =============================================================================
+#  Site configuration
+#  Most day-to-day settings you might change are near the top.
+# =============================================================================
+
+# Overridden automatically by the GitHub Actions workflow at deploy time,
+# so you normally never need to touch this.
+baseURL: "https://nicholassparks01.github.io/"
+title: "Nicholas Sparks"
+locale: en-us
+theme: hextra
+
+enableRobotsTXT: true
+enableGitInfo: true          # "Last updated" dates come from git history
+enableInlineShortcodes: true
+
+# Content that is still marked `draft: true` is never published.
+buildDrafts: false
+
+taxonomies:
+  tag: tags
+
+markup:
+  highlight:
+    noClasses: false         # use the theme's light/dark syntax colors
+  goldmark:
+    renderer:
+      unsafe: true           # allow raw HTML inside Markdown
+    extensions:
+      passthrough:           # LaTeX math: $$ ... $$ and \( ... \)
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
+
+menu:
+  main:
+    - name: Blog
+      pageRef: /blog
+      weight: 1
+    - name: Tags
+      pageRef: /tags
+      weight: 2
+    - name: Archives
+      pageRef: /archives
+      weight: 3
+    - name: About
+      pageRef: /about
+      weight: 4
+    - name: Search
+      weight: 5
+      params:
+        type: search
+    - name: GitHub
+      weight: 6
+      url: "https://github.com/NicholasSparks01"
+      params:
+        icon: github
+    - name: RSS
+      weight: 7
+      url: "/blog/index.xml"
+      params:
+        icon: rss
+
+params:
+  description: "Security research: reverse engineering, ai/llm integration, write-ups, blogs."
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      width: 28
+      height: 28
+    width: wide
+
+  page:
+    width: wide
+
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: wide
+
+  theme:
+    default: system          # light | dark | system
+    displayToggle: true
+
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+
+  # "Edit this page" link at the bottom of every page
+  editURL:
+    enable: true
+    base: "https://github.com/NicholasSparks01/NicholasSparks01.github.io/edit/main/content"
+
+  blog:
+    list:
+      displayTags: true
+      sortBy: date
+      sortOrder: desc
+      pagerSize: 15
+    article:
+      displayPagination: true
+
+  archives:
+    section: blog
+    dateFormat: "Jan 02"
+
+  toc:
+    displayTags: true
+
+  highlight:
+    copy:
+      enable: true
+      display: hover
+
+  imageZoom:
+    enable: true
+
+  externalLinkDecoration: true
+
+  # Comments via GitHub Discussions. See WRITING.md -> "Enable comments".
+  comments:
+    enable: false
+    type: giscus
+    giscus:
+      repo: NicholasSparks01/NicholasSparks01.github.io
+      repoId: ""
+      category: Announcements
+      categoryId: ""
