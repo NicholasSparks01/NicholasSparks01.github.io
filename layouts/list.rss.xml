@@ -1,0 +1,115 @@
+{{ `<?xml version="1.0" encoding="utf-8" standalone="yes"?>` | safeHTML }}
+{{- /*
+  Custom RSS 2.0 feed, replacing themes/hextra/layouts/list.rss.xml.
+
+  The theme's feed dumps each post's full rendered page HTML into
+  <description>. That markup is fine in a browser but hostile to feed
+  readers -- Outlook in particular -- because it carries:
+
+    * inline <svg> icons, including unquoted attributes (height=1.2em)
+    * KaTeX output with absolutely-positioned inline styles
+      (top:-3.063em), which readers flag as dangerous style content
+    * <details>/<summary> blocks that collapse to nothing in mail
+    * same-page "#heading" links, which resolve against the reader's
+      own base URL and therefore go nowhere
+
+  It was also missing the XML declaration entirely.
+
+  This template instead emits a declaration plus a short, plain-text
+  summary per item and a link back to the post. Add `rss.fullContent: true`
+  under `params` in hugo.yaml to also ship the full post HTML in
+  <content:encoded>; readers that honour it get the whole article while
+  <description> stays simple for everything else. Note that LaTeX math
+  still reads poorly in that mode -- KaTeX needs its stylesheet to place
+  superscripts, so `2^n` arrives as `2n`.
+
+  Other knobs, also under `params.rss`:
+    sections       -- which content types the site-wide feed covers
+                      (default: ["blog"])
+    summaryLength  -- max characters in each <description> (default: 400)
+*/ -}}
+{{- $pages := slice -}}
+{{- if not .Section -}}
+  {{- $sections := site.Params.rss.sections | default (slice "blog") -}}
+  {{- $pages = where site.RegularPages "Type" "in" $sections -}}
+{{- else if and .Parent .Parent.IsHome -}}
+  {{- $pages = where site.RegularPages "Type" .Section -}}
+{{- else -}}
+  {{- $pages = .Pages -}}
+{{- end -}}
+{{- /* services.rss.limit when set, otherwise the 50 the theme used. */ -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if lt $limit 1 -}}
+  {{- $limit = 50 -}}
+{{- end -}}
+{{- $pages = first $limit $pages -}}
+{{- $fullContent := site.Params.rss.fullContent | default false -}}
+{{- $summaryLength := site.Params.rss.summaryLength | default 400 -}}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ site.Title }}{{ if and .Title (ne .Title site.Title) }} &#8211; {{ .Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ else }}Recent content {{ with $.Title }}{{ if ne . site.Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}{{ end }}{{ end }}</description>
+    <generator>Hugo</generator>
+    {{- with partial "utils/hugo-compat/language-locale.html" site.Language }}
+    <language>{{ . }}</language>
+    {{- end }}
+    {{- with site.Params.author.email }}
+    <managingEditor>{{ . }}{{ with site.Params.author.name }} ({{ . }}){{ end }}</managingEditor>
+    <webMaster>{{ . }}{{ with site.Params.author.name }} ({{ . }}){{ end }}</webMaster>
+    {{- end }}
+    {{- with site.Copyright }}
+    <copyright>{{ . }}</copyright>
+    {{- end }}
+    {{- $built := now }}
+    {{- with $pages }}{{ with (index . 0).Date }}{{ if not .IsZero }}{{ $built = . }}{{ end }}{{ end }}{{ end }}
+    <lastBuildDate>{{ $built.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- with .OutputFormats.Get "rss" }}
+    <atom:link href="{{ .Permalink }}" rel="self" type="{{ .MediaType }}" />
+    {{- end }}
+    {{- range $pages }}
+    {{- /* Prefer the hand-written front-matter description; fall back to the
+           text above <!--more-->. Either way, flatten it to one line of
+           plain text so no markup reaches the reader. */ -}}
+    {{- $summary := cond (ne .Description "") .Description (string .Summary) -}}
+    {{- $summary = $summary | plainify | htmlUnescape -}}
+    {{- $summary = replaceRE `\s+` " " $summary | chomp -}}
+    {{- $summary = $summary | truncate $summaryLength -}}
+    {{- $body := printf "<p>%s</p>\n<p><a href=\"%s\">Read the full post on %s</a></p>" (htmlEscape $summary) .Permalink (htmlEscape site.Title) -}}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      {{- if not .Date.IsZero }}
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{- end }}
+      {{- range .Params.authors }}
+      {{- with .name }}
+      <dc:creator>{{ . }}</dc:creator>
+      {{- end }}
+      {{- end }}
+      {{- range .GetTerms "tags" }}
+      <category>{{ .LinkTitle }}</category>
+      {{- end }}
+      <description>{{ printf "<![CDATA[%s]]>" (replace $body "]]>" "]]&gt;") | safeHTML }}</description>
+      {{- if $fullContent }}
+      {{- $full := .Content -}}
+      {{- /* Drop what readers cannot render: inline SVG, script/style
+             blocks, the MathML half of every KaTeX formula (which would
+             otherwise show the equation twice), and the inline styles and
+             theme classes that only mean something with the site's CSS
+             loaded. Then rewrite same-page anchors to point at the post. */ -}}
+      {{- $full = replaceRE `(?s)<svg[^>]*>.*?</svg>` "" $full -}}
+      {{- $full = replaceRE `(?s)<script[^>]*>.*?</script>` "" $full -}}
+      {{- $full = replaceRE `(?s)<style[^>]*>.*?</style>` "" $full -}}
+      {{- $full = replaceRE `(?s)<math[^>]*>.*?</math>` "" $full -}}
+      {{- $full = replaceRE `\s+style="[^"]*"` "" $full -}}
+      {{- $full = replaceRE `\s+class="[^"]*"` "" $full -}}
+      {{- $full = replaceRE `(href=")#` (printf "${1}%s#" .Permalink) $full -}}
+      {{- $full = replaceRE `<a[^>]*></a>` "" $full -}}
+      <content:encoded>{{ printf "<![CDATA[%s]]>" (replace $full "]]>" "]]&gt;") | safeHTML }}</content:encoded>
+      {{- end }}
+    </item>
+    {{- end }}
+  </channel>
+</rss>
